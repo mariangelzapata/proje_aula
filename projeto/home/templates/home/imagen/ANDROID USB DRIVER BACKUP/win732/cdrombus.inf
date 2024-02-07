@@ -1,0 +1,106 @@
+;
+; Bus Driver Installation. For Remove CDROM.
+;
+
+[Version]
+Signature                   = "$CHICAGO$"
+Class                       = USB
+ClassGUID                   = {36FC9E60-C465-11CF-8056-444553540000}
+Provider                    = %ProviderName%
+DriverVer                   = 04/11/2014,6.0.0000.00000
+CatalogFile                 = cdrombus.cat
+
+[SourceDisksNames]
+1=%Disk_Description%,,,
+
+[SourceDisksFiles]
+cdrombus.sys = 1
+
+[Manufacturer]
+%MfgName% = Generic, NTx86, NTia64, NTamd64
+
+[Generic]
+%CdromBusDescA000%    = CdromBusInstall, USB\VID_1BBB&PID_A000
+%CdromBusDescF017%    = CdromBusInstall, USB\VID_1BBB&PID_F017
+
+;;; =============== A100~A1XX, For CMDC ================================================== ;;;
+%CdromBusDescA100%    = CdromBusInstall, USB\VID_1BBB&PID_A100
+
+;;; =============== AF00~AFXX, For Common ================================================ ;;;
+%CdromBusDescAF00%    = CdromBusInstall, USB\VID_1BBB&PID_AF00
+
+[Generic.NTx86]
+%CdromBusDescA000%    = CdromBusInstall, USB\VID_1BBB&PID_A000
+%CdromBusDescF017%    = CdromBusInstall, USB\VID_1BBB&PID_F017
+
+;;; =============== A100~A1XX, For CMDC ================================================== ;;;
+%CdromBusDescA100%    = CdromBusInstall, USB\VID_1BBB&PID_A100
+
+;;; =============== AF00~AFXX, For Common ================================================ ;;;
+%CdromBusDescAF00%    = CdromBusInstall, USB\VID_1BBB&PID_AF00
+
+[Generic.NTia64]
+%CdromBusDescA000%    = CdromBusInstall, USB\VID_1BBB&PID_A000
+%CdromBusDescF017%    = CdromBusInstall, USB\VID_1BBB&PID_F017
+
+;;; =============== A100~A1XX, For CMDC ================================================== ;;;
+%CdromBusDescA100%    = CdromBusInstall, USB\VID_1BBB&PID_A100
+
+;;; =============== AF00~AFXX, For Common ================================================ ;;;
+%CdromBusDescAF00%    = CdromBusInstall, USB\VID_1BBB&PID_AF00
+
+[Generic.NTamd64]
+%CdromBusDescA000%    = CdromBusInstall, USB\VID_1BBB&PID_A000
+%CdromBusDescF017%    = CdromBusInstall, USB\VID_1BBB&PID_F017
+
+;;; =============== A100~A1XX, For CMDC ================================================== ;;;
+%CdromBusDescA100%    = CdromBusInstall, USB\VID_1BBB&PID_A100
+
+;;; =============== AF00~AFXX, For Common ================================================ ;;;
+%CdromBusDescAF00%    = CdromBusInstall, USB\VID_1BBB&PID_AF00
+
+[DestinationDirs]
+CdromBusDriverFiles = 10,System32\Drivers
+
+[CdromBusInstall]
+CopyFiles=CdromBusDriverFiles
+
+[CdromBusInstall.Services]
+Addservice = cdrombus, 0x00000002, CdromBusAddService
+
+[CdromBusInstall.NT]
+CopyFiles=CdromBusDriverFiles
+
+[CdromBusInstall.NT.Services]
+Addservice = cdrombus, 0x00000002, CdromBusAddService
+
+[CdromBusAddService]
+DisplayName    = %CdromBusSvcDesc%
+ServiceType    = 1                  ; SERVICE_KERNEL_DRIVER
+StartType      = 3                  ; SERVICE_DEMAND_START
+ErrorControl   = 1                  ; SERVICE_ERROR_NORMAL
+ServiceBinary  = %10%\System32\Drivers\cdrombus.sys
+AddReg         = CdromBusAddReg
+LoadOrderGroup = Base
+
+[CdromBusAddReg]
+HKR,,DevLoader,,*ntkern
+HKR,,NTMPDriver,,cdrombus.sys
+HKR,"Parameters","MaximumTransferSize",0x10001,4096
+HKR,"Parameters","DebugLevel",0x10001,2
+HKR,"Parameters","AlcatelEnable",0x10001,1
+
+[CdromBusDriverFiles]
+cdrombus.sys
+
+;---------------------------------------------------------------;
+
+[Strings]
+ProviderName        = "TCL"
+MfgName             = "TCL"
+CdromBusSvcDesc     = "Android BUS Service"
+Disk_Description    = "Android USB Driver Installation Disk"
+CdromBusDescA000    = "ALCATEL USB Bus"
+CdromBusDescF017    = "ALCATEL USB Bus"
+CdromBusDescA100    = "CMDC M812 USB Bus"
+CdromBusDescAF00    = "Android USB Bus"
