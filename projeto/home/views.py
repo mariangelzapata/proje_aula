@@ -13,3 +13,9 @@ def home_view2 (request):
         request, 
         'home/index2.html'
     )
+
+def home_view3 (request):
+    return render(
+        request, 
+        'home/form.html'
+    )

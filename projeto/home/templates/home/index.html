@@ -17,24 +17,38 @@
             width: 40%;
             text-align: center; 
         }
-        h1  {
-            
-            text-align: center;
+        .titulo {
+           background-color:#581845;
         }
-        h2  {
-            
-            text-align: center; 
+   h1  {
+    font-size: 30px;
+    color: #f1f1f1
+}
+h2  {
+    font-size: 20px;
+    color: #f1f1f1;
+}
+ 
+      .btn-text-right{
+        text-align: right;
         }
-      
     
         
 </style>
 
 <body>
+  <div class="titulo"> 
     <h1> Bem-vindo ao SAE</h1>
     <h2> Site de administração do Empreendedor</h2>
-    {% load static %}   
-    <h3></h3>
+    <div class="btn-text-right">
+      <a href="{% url 'view2' %}"><button type="button" class="btn btn-light" >Entrar</button></a>
+     <a href="{% url 'view3' %}"><button type="button" class="btn btn-outline-danger">Inscriva-se</button></a>
+    </div>
+  </div> 
+  
+
+  {% load static %}   
+    
       <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel"  >
         <div class="carousel-inner">
           <div class="carousel-item active">
@@ -58,5 +72,53 @@
         </button>
       </div>
 
+  <p>Empreender envolve a conversão de uma nova ideia em uma inovação de sucesso usando
+    habilidades, visão, criatividade e persistência. </p>
+  <p>Aqui ajudamos você a torná-lo realidade </p>
+  <h3>Porque suas ideias são nossas ideias</h3>
+
+
+
+  
+
+
+<div class="accordion" id="accordionExample">
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+       O que é Empreendimento?
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong> O que é Empreendimento?</strong>  O empreendimento não deixa de ser uma empresa, mas ele se diferencia por carregar o conceito da realização, inovação e dinamismo. Por trás dele está a ação empreendedora, com o comportamento mais arrojado e fora do comum.<code></code>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+        Accordion Item #2
+      </button>
+    </h2>
+    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+  <div class="accordion-item">
+    <h2 class="accordion-header">
+      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+        Accordion Item #3
+      </button>
+    </h2>
+    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+      </div>
+    </div>
+  </div>
+</div>
 </body>
-</html>
+</html
